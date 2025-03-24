@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le Ticket</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='redim.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='StyleEdit.css') }}">
+
+</head>
+<body>
+    <div class="form-container">
+        <!-- Titre principal -->
+
+        <!-- Logo -->
+<div class="logo-container">
+    <img src="{{ url_for('static', filename='img/logoadgvlogin.png') }}" alt="Logo de la boîte" class="logo">
+</div>
+
+        <h1 class="form-title">Modifier le ticket</h1>
+        
+    
+<!-- Formulaire pour modifier un ticket -->
+     <form action="{{ url_for('edit_ticket', ticket_id=ticket.id) }}" method="POST">
+    <label for="title">Titre :</label>
+    <input type="text" name="title" id="title" value="{{ ticket.title }}" readonly>
+
+
+    <label for="description">Description :</label>
+    <textarea name="description" id="description" rows="3" readonly>{{ ticket.description }}</textarea>
+
+    <!-- Date et Heure de Début -->
+    <label for="slot_time">Date et Heure de Début :</label>
+    <input type="datetime-local" name="slot_time" id="slot_time" value="{{ ticket['slot_time'].replace(' ', 'T') }}" required>
+
+    <!-- Date et Heure de Fin -->
+    <label for="end_time">Date et Heure de Fin :</label>
+    <input type="datetime-local" name="end_time" id="end_time" value="{{ ticket['end_time'].replace(' ', 'T') }}" required>
+
+    <!-- Nom de l'utilisateur -->
+    <label for="name">Nom de l'utilisateur :</label>
+    <input type="text" name="name" id="name" value="{{ ticket['name'] }}" readonly>
+
+    <!-- Email de l'utilisateur -->
+    <label for="email">Email de l'utilisateur :</label>
+    <input type="email" name="email" id="email" value="{{ ticket['email'] }}" readonly>
+
+    <!-- Statut -->
+    <label for="status">Statut :</label>
+    <select name="status" id="status" required>
+        <option value="Ouvert" {% if ticket['status'] == 'Ouvert' %}selected{% endif %}>Ouvert</option>
+        <option value="Demande traitée" {% if ticket['status'] == 'Demande traitée' %}selected{% endif %}>Demande traitée</option>
+        <option value="En cours de livraison" {% if ticket['status'] == 'En cours de livraison' %}selected{% endif %}>En cours de livraison</option>
+        <option value="Clôturé" {% if ticket['status'] == 'Clôturé' %}selected{% endif %}>Clôturé</option>
+    </select>
+
+    <!-- Commentaire de Sylvain -->
+    <label for="admin_comment">Commentaire de Sylvain :</label>
+    <textarea name="admin_comment" id="admin_comment" rows="3">{{ ticket['admin_comment'] or '' }}</textarea>
+
+    <!-- Conteneur des boutons -->
+    <div class="button-container">
+        <!-- Bouton Retour -->
+        <a href="{{ url_for('admin') }}" class="back-button">Retour à la page principale</a>
+
+        <!-- Bouton de soumission -->
+        <button type="submit" class="submit-button">Mettre à jour le ticket</button>
+    </div>
+</form>
+
+
+    
+    
+
+    <!-- Lien vers ton fichier JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+/* Conteneur principal */
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 30px 40px; /* Plus de padding en bas pour espacer les boutons */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    height: auto; /* Ajuste automatiquement à la hauteur du contenu */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ne force pas le "space-between" */
+    overflow: hidden;
+}
+
+/* Titre principal */
+h1 {
+    text-align: center;
+    font-size: 22px;
+    color: #6a0dad;
+    margin-bottom: 10px;
+}
+
+/* Champs de formulaire */
+input[type="text"],
+input[type="email"],
+input[type="datetime-local"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Boutons */
+button[type="submit"], .back-button {
+    flex: 1; /* Les deux boutons prennent la même largeur */
+    max-width: 48%; /* Limite la largeur maximale des boutons */
+    padding: 10px; /* Ajuste le padding pour conserver une taille uniforme */
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    margin: 0 5px; /* Espace horizontal entre les boutons */
+    text-align: center; /* S'assure que le texte est centré */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+/* Bouton principal */
+button[type="submit"] {
+    background: #6a0dad;
+    color: #ffffff;
+    border: none;
+}
+
+button[type="submit"]:hover {
+    background: #4b0082;
+}
+
+/* Bouton Retour */
+.back-button {
+    background: #cccccc;
+    color: #333333;
+    text-decoration: none;
+    border: none;
+}
+
+.back-button:hover {
+    background: #6a0dad;
+    color: #ffffff;
+}
+
+/* Conteneur des boutons */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Garde les boutons alignés avec un espace entre eux */
+    align-items: center; /* Alignement vertical */
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #cccccc; /* Ligne fine pour séparer visuellement les boutons */
+}
+
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Zone de texte (commentaire) */
+textarea {
+    resize: none;
+    min-height: 60px;
+}
+
+/* Arrière-plan */
+body {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333333;
+}

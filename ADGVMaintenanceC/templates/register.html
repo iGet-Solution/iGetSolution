@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - ADGVGROUPE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='StyleRegister.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='redim.png') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logoadgvlogin.png') }}" alt="Logo ADGV">
+            </div>
+            <h1>Créer un compte</h1>
+
+            <!-- Affichage des messages flash sur la page d'inscription -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  <div id="flash-message" style="margin-bottom: 10px;">
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endwith %}
+
+
+
+            <form action="/register" method="POST">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur :</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Rôle :</label>
+                    <select id="role" name="role" required>
+                        <option value="utilisateur">Utilisateur</option>
+                        <option value="administrateur">Administrateur</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">S'inscrire</button>
+            </form>
+            <p>Déjà un compte ? <a href="/login">Connectez-vous ici</a>.</p>
+        </div>
+    </div>
+
+     <!-- Lien vers ton fichier JS -->
+     <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
+  <!-- activer pour choisir un admin ou pas <div class="form-group">
+                    <label for="role">Rôle :</label>
+                    <select id="role" name="role" required>
+                        <option value="utilisateur">Utilisateur</option>
+                        <option value="administrateur">Administrateur</option>
+                    </select>
+                </div> désactiver pour le remettre -->

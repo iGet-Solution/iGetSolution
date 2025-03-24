@@ -1,0 +1,667 @@
+/* Style global */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal */
+.form-container {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Logo */
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 90px;
+    height: auto;
+}
+
+/* Titres */
+.form-title {
+    color: #6a11cb;
+    margin-bottom: 5px;
+    font-size: 2em;
+}
+
+.form-subtitle {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Formulaire */
+.ticket-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.ticket-form label {
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+.ticket-form input,
+.ticket-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.ticket-form input[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.submit-button {
+    background-color: #6a11cb;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #2575fc;
+}
+
+/* Section titre */
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #ffffff;
+    margin: 20px 0;
+}
+
+/* Style pour le calendrier */
+.calendar-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 95%;
+    min-height: 600px;
+}
+
+
+
+
+/* Style des événements FullCalendar */
+.fc-daygrid-event {
+    width: 90% !important; /* Réduit légèrement la largeur pour créer un espace de marge */
+    height: 100% !important; /* Assure que le ticket occupe toute la hauteur de la case */
+    margin: 0 auto 10px auto !important; /* Centrage du ticket avec un peu d'espace sous */
+    padding: 12px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 10px; /* Arrondir les coins du ticket */
+    color: #fff;
+    overflow: hidden;
+    white-space: normal;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Organise le contenu verticalement */
+    justify-content: center; /* Centre le contenu verticalement */
+    align-items: center; /* Centre le contenu horizontalement */
+}
+
+
+/* Appliquer la couleur en fonction du statut du ticket (modifié via le statut dans l'admin) */
+.fc-daygrid-event[data-status] {
+    background-color: var(--event-bg-color) !important; /* Applique la couleur dynamique selon le statut */
+    border: none !important; /* Supprime toute bordure pour que la couleur remplisse tout l'espace */
+    color: white !important; /* Assure que le texte reste visible */
+    width: 90% !important; /* Garde une largeur de 90% */
+    height: 100% !important; /* Garde la hauteur à 100% pour que le ticket prenne toute la place */
+    margin: 0 auto 10px auto !important; /* Centré dans la case */
+}
+
+/* Appliquer la couleur en fonction du statut du ticket (modifié via le statut dans l'admin) */
+.fc-daygrid-event[data-background-color] {
+    background-color: attr(data-background-color) !important; /* Applique la couleur dynamique selon le statut */
+    border: none !important; /* Supprime toute bordure pour que la couleur remplisse tout l'espace */
+    color: white !important; /* Assure que le texte reste visible */
+}
+
+
+
+/* Contenu interne des événements */
+.fc-daygrid-event div {
+    font-size: 0.95em;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+/* Titre de l'événement (plus grand et centré) */
+.custom-event-title {
+    font-size: 1.6em; /* Agrandissement du titre */
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center; /* Assure que le titre est centré */
+}
+
+/* Description de l'événement */
+.custom-event-description {
+    font-size: 1.1em; /* Taille agrandie légèrement */
+    color: #f0f0f0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center; /* Centré aussi */
+}
+
+/* Heure de l'événement */
+.custom-event-time {
+    font-size: 1em; /* Agrandi légèrement */
+    color: #ccc;
+    text-align: center;
+}
+
+/* Nom de l'utilisateur */
+.custom-event-requestor {
+    font-size: 1.3em;
+    color: #fff;
+    text-align: center;
+}
+
+/* Modale */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    position: relative;
+    word-wrap: break-word; /* Force le retour à la ligne pour les longs mots */
+}
+
+.modal-content p {
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Table des tickets */
+.ticket-table {
+    width: 100%; /* Utilise toute la largeur disponible */
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #003366; /* Fond sombre */
+    border-radius: 10px;
+    color: #ffffff; /* Texte blanc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    table-layout: fixed; /* Fixe la taille des colonnes */
+    word-wrap: break-word; /* Autorise le retour à la ligne dans les cellules */
+    max-width: 100%; /* Empêche le débordement horizontal */
+}
+
+
+.ticket-table td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+    word-wrap: break-word; /* Retour à la ligne pour les longues chaînes */
+    overflow: hidden; /* Évite tout débordement */
+    font-size: 0.95em;
+    max-width: 200px; /* Limite la largeur des colonnes */
+}
+
+.ticket-table td:nth-child(1), /* ID */
+.ticket-table td:nth-child(2), /* Nom */
+.ticket-table td:nth-child(6), /* Statut */
+.ticket-table td:nth-child(7) { /* Commentaire Admin */
+    text-align: center;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.ticket-table tr:nth-child(even) {
+    background-color: #004080;
+}
+
+.ticket-table tr:hover {
+    background-color: #0059b3; /* Couleur au survol */
+}
+
+.ticket-table th, 
+.ticket-table td {
+    max-width: 200px;
+    word-break: break-word;
+}
+
+/* Assurez-vous que les cellules d'en-tête sont alignées correctement */
+.ticket-table th {
+    background-color: #6a11cb;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    padding: 12px;
+    white-space: nowrap; /* Empêche les retours à la ligne */
+    border: 1px solid #444;
+    vertical-align: middle; /* Centre verticalement le texte et les contenus */
+    position: relative; /* Nécessaire pour positionner le filtre sous "Nom" */
+
+}
+
+/* Conteneur pour le texte et le filtre */
+.filter-container {
+    display: flex;
+    align-items: center; /* Aligne le texte et le filtre horizontalement */
+    justify-content: center;
+    gap: 8px; /* Espacement entre le texte et le menu déroulant */
+}
+
+/* Menu déroulant */
+.filter-dropdown {
+    width: 15px; /* Réduit la largeur initiale pour apparaître comme une flèche */
+    height: 20px; /* Ajuste la taille verticale */
+    appearance: none; /* Supprime le style natif du menu déroulant */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23FFFFFF' class='bi bi-caret-down-fill' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658c-.566-.636-.106-1.658.753-1.658h9.592c.86 0 1.32 1.022.753 1.658L8.753 11.14a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") no-repeat right center;
+    background-size: 12px; /* Taille de l'icône */
+    background-color: transparent;
+    border: none; /* Supprime la bordure */
+    color: transparent; /* Rend le texte transparent */
+    cursor: pointer; /* Curseur en forme de main */
+}
+
+/* Option sélectionnée */
+.filter-dropdown option {
+    color: black; /* Couleur du texte des options */
+}
+
+/* Ajuste la bordure de l'en-tête pour bien encadrer */
+.filter-container select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+/* systéme de couleur ticket crée ou pas*/
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Bouton Back to Top */
+
+.back-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Dégradé moderne */
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Bouton rond */
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+    text-align: center;
+    line-height: 50px; /* Centre l'icône verticalement */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: none; /* Caché par défaut */
+    z-index: 1000;
+}
+
+.back-to-top-btn:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb); /* Inverse le dégradé au survol */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px); /* Légère élévation */
+}
+
+.back-to-top-btn i {
+    font-weight: bold;
+}
+
+
+
+/* Style du bouton Déconnexion */
+.logout-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ff4d4d; /* Rouge pour la déconnexion */
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+    opacity: 0; /* Initialement caché */
+    pointer-events: none; /* Empêche l'interaction quand il est caché */
+    transition: opacity 0.3s ease;
+}
+
+.logout-btn.show {
+    opacity: 1; /* Affiche le bouton lorsqu'il a la classe 'show' show = */
+    pointer-events: auto; /* Permet l'interaction quand il est visible */
+}
+
+.logout-btn:hover {
+    background-color: #e60000; /* Rouge foncé au survol */
+    transform: translateY(-5px); /* Légère élévation au survol */
+}
+
+.logout-btn:focus {
+    outline: none; /* Retirer la bordure du bouton lors du focus */
+}
+
+
+
+
+/* Conteneur des boutons Modifier et Supprimer */
+.action-buttons {
+    display: flex;
+    flex-direction: column; /* Affiche les boutons l'un sous l'autre */
+    gap: 10px; /* Espacement entre les boutons */
+    width: 100%; /* S'assure que les boutons prennent toute la largeur */
+}
+
+/* Style générique du bouton admin */
+.admin-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Pour enlever le soulignement du lien */
+    width: 100%; /* Les boutons prennent toute la largeur de la cellule */
+    box-sizing: border-box; /* Inclut les padding dans la largeur totale */
+}
+
+/* Style pour les boutons Modifier */
+.modify-btn {
+    background-color: #6a11cb;
+    color: white;
+}
+
+.modify-btn:hover {
+    background-color: #2575fc;
+}
+
+/* Style pour les boutons Supprimer */
+.delete-btn {
+    background-color: #f44336; /* Rouge pour supprimer */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f; /* Rouge plus foncé lors du survol */
+}
+
+
+
+/* Styles pour le modal */
+.delete-modal {
+    position: fixed; /* Fixe le modal à l'écran */
+    top: 50%; /* 50% du haut de l'écran */
+    left: 50%; /* 50% du côté gauche de l'écran */
+    transform: translate(-50%, -50%); /* Cela déplace le modal pour le centrer */
+    width: 400px; /* Largeur de la fenêtre modale */
+    padding: 20px; /* Padding pour l'intérieur de la fenêtre */
+    border-radius: 8px; /* Bord arrondi pour la fenêtre */
+    display: none; /* Cacher par défaut */
+    z-index: 9999; /* Assurez-vous que le modal est au-dessus de tout autre élément */
+}
+
+
+
+.delete-modal .delete-modal-content {
+    background-color: white; /* Arrière-plan du contenu */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.delete-modal .delete-modal-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.delete-modal .delete-modal-content .confirm-btn {
+    background-color: #28a745;  /* Vert pour confirmer */
+    color: white;
+    border: none;
+}
+
+.delete-modal .delete-modal-content .cancel-btn {
+    background-color: #dc3545;  /* Rouge pour annuler */
+    color: white;
+    border: none;
+}
+
+
+
+
+/* Style du bouton pour trier */
+.sort-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+/* Lorsque l'icône est triée dans l'autre sens */
+.sort-button.descending i {
+    transform: rotate(180deg); /* Retourne l'icône de la flèche */
+}
+
+
+/* Style du bouton Export */
+.export-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px; /* Position à gauche */
+    background-color: #28a745; /* Vert pour indiquer l'exportation */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0; /* Initialement caché */
+    pointer-events: none; /* Empêche l'interaction tant qu'il est caché */
+}
+
+/* Bouton visible */
+.export-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.export-btn:hover {
+    background-color: #297e34; /* Rouge foncé au survol */
+    transform: translateY(-5px); /* Légère élévation au survol */
+}
+
+
+/*date dispo:*/
+
+#next-available-btn {
+    background-color: #6a11cb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#next-available-btn:hover {
+    background-color: #531aab;
+}
+
+.next-available-btn:hover {
+    background-color: #2575fc;
+}
+
+.hint-text {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+    text-align: center;
+}
+
+
+small.text-muted {
+    font-size: 0.85rem;
+    color: #6c757d;
+    display: block;
+    margin-top: 5px;
+}
+
+/*element de la case a cocher*/
+.urgent-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.urgent-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espace entre le switch et le texte */
+}
+
+.urgent-toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.urgent-toggle input {
+    display: none; /* Masquer la case à cocher */
+}
+
+.urgent-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #575656;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.urgent-slider::before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.urgent-toggle input:checked + .urgent-slider {
+    background-color: #4caf50;
+}
+
+.urgent-toggle input:checked + .urgent-slider::before {
+    transform: translateX(20px);
+}
+
+.urgent-label {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}

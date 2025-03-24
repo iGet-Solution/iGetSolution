@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Programmation Web</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page1.css"> <!-- CSS spécifique à page1 -->
+    <link rel="icon" type="image/png" href="img-vid/logo get fond clair.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="script.js"></script>
+</head>
+
+
+
+
+<body class="page1">
+    <!-- Barre de navigation -->
+    <header id="header">
+        <nav class="navbar transparent">
+            <div class="logo">
+                <a href="index.html"><img src="img-vid/logo get fond clair.png" alt="Logo" id="logo"></a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="close-icon">
+                <i class="fas fa-times"></i>
+            </div>
+        </nav>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#nos-solutions">NOS SOLUTIONS</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Section principale de la page -->
+    <div class="page1-section">
+        <!-- Section 1 -->
+        <div class="page1-item">
+            <div class="page1-text">
+                <h3>Conception et Développement</h3>
+                <p>Je crée un site web élégant et fonctionnel en utilisant HTML et CSS ou des solutions comme WordPress pour offrir une expérience utilisateur optimale. Que vous ayez besoin d'un site vitrine, d'un blog ou d'un site e-commerce, j'ai les compétences nécessaires pour réaliser votre projet.
+                </p>
+            </div>
+            <div class="page1-image-container">
+                <img src="img-vid/conceptdev.png" alt="Image test" class="page1-image">
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="page1-item">
+            <div class="page1-text">
+                <h3>Optimisation des Performances et SEO</h3>
+                <p>J'utilise des pratiques de codage optimales pour garantir que votre site est bien structuré, facilitant ainsi son indexation par les moteurs de recherche. 
+
+                    Balises Meta et Sémantique : J'intègre des balises meta et une sémantique HTML appropriée pour améliorer la visibilité de votre site sur les moteurs de recherche. 
+                    
+                    J'optimise également le code HTML et CSS pour garantir des temps de chargement rapides et une performance optimale, améliorant ainsi l'expérience utilisateur et le référencement de votre site.
+                    </p>
+            </div>
+            <div class="page1-image-container">
+                <img src="img-vid/opti seo.jpg" alt="Image test" class="page1-image">
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="page1-item">
+            <div class="page1-text">
+                <h3>Maintenance et Mise à Jour</h3>
+                <p>Je m'occupe des mises à jour régulières de votre site, y compris les ajouts de contenu, les modifications de design et les ajustements techniques. 
+
+                    J'assure également la maintenance technique de votre site en corrigeant les bugs et en améliorant constamment les fonctionnalités pour garantir un fonctionnement sans faille.</p>
+            </div>
+            <div class="page1-image-container">
+                <img src="img-vid/maintenance maj.png" alt="Image test" class="page1-image">
+            </div>
+        </div>
+            
+    
+        <section id="contact" class="contact-container">
+            <!-- Partie gauche : Formulaire de contact -->
+            <div class="contact-left">
+                <form id="contact-form" method="POST" action="https://formspree.io/f/xqazaayq">
+                    <div class="fields">
+                        <div class="field">
+                            <label for="name">Prénom</label>
+                            <input type="text" name="name" id="name" class="input-field" autocomplete="given-name" />
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="input-field" autocomplete="email" />
+                        </div>
+                        <div class="field">
+                            <label for="message">Votre Message</label>
+                            <textarea name="message" id="message" rows="6" class="textarea-field" autocomplete="off"></textarea>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <input type="submit" value="Envoyer" class="submit-button">
+                        <input type="reset" value="Supprimer" class="reset-button">
+                    </div>
+                </form>
+                
+                <!-- Message de confirmation -->
+                <div id="confirmation-message" class="confirmation-message" style="display: none;">
+                    Votre message a été envoyé avec succès !
+                </div>
+            </div>
+        
+            <!-- Partie droite : Informations de contact -->
+            <div class="contact-right">
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email</h4>
+                    <a href="mailto:igetsolution@gmail.com">igetsolution@gmail.com</a>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-phone"></i>
+                    <h4>Téléphone</h4>
+                    <span>07.50.35.62.18</span>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-home"></i>
+                    <h4>Adresse</h4>
+                    <span>Angers<br>Durtal, La Flèche, et alentours</span>
+                </div>
+            </div>
+        </section>
+
+     
+
+    <!-- Footer (Réutilisé de styles.css) -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="footer-text">
+            &copy; Tous droits réservés à iGetSolution. Ce site a été entièrement conçu et réalisé par mes soins. Toute reproduction, totale ou partielle, est interdite sans mon autorisation.
+        </p>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+</body>
+
+</html>

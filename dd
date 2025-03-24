@@ -1,0 +1,133 @@
+/* === Réinitialisation globale === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Empêche les débordements horizontaux */
+}
+
+/* === Barre de navigation === */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px; /* Hauteur de la navbar */
+    z-index: 1000;
+    background-color: #1e3547; /* Couleur principale directement */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Légère ombre */
+}
+
+/* Ajout d'un espace sous la navbar */
+body.page1 {
+    padding-top: 70px; /* Compense la hauteur de la navbar */
+    background-color: #1e3547; /* Couleur principale du site */
+}
+
+/* === Section principale === */
+body.page1 .page1-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #1e3547; /* Couleur de fond */
+}
+
+/* === Contenu interne === */
+body.page1 .page1-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body.page1 .page1-item:nth-child(odd) {
+    flex-direction: row; /* Par défaut */
+}
+
+body.page1 .page1-item:nth-child(even) {
+    flex-direction: row-reverse; /* Inverse pour les sections paires */
+}
+
+/* Texte */
+.page1-text {
+    flex: 1;
+    background-color: #0d2538; /* Couleur de fond sombre */
+    padding: 40px;
+    border-radius: 0 8px 8px 0; /* Coins arrondis, ajustés */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+body.page1 .page1-item:nth-child(even) .page1-text {
+    border-radius: 8px 0 0 8px; /* Coins inversés pour les sections paires */
+}
+
+.page1-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.page1-text h3::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: #52b3e4;
+    margin-top: 10px;
+}
+
+.page1-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #d1d1d1;
+}
+
+/* Images */
+.page1-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    padding: 20px 0; /* Ajoute de l'espace en haut et en bas (20px équivaut à environ 2 cm) */
+    background-color: #1e3547; /* Même couleur que le site */
+}
+
+.page1-image {
+    width: 95%; /* Réduit la largeur pour ajouter de l'espace visuel */
+    height: auto; /* Ajuste automatiquement la hauteur */
+    max-height: 300px; /* Limite la hauteur pour plus de contrôle */
+    object-fit: cover; /* Assure un bon recadrage */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    body.page1 .page1-item {
+        flex-direction: column;
+    }
+
+    .page1-image-container {
+        padding: 10px 0; /* Réduit l'espacement sur mobile */
+    }
+
+    .page1-image {
+        width: 90%; /* Images plus petites sur mobile */
+        height: auto;
+    }
+
+    .page1-text {
+        border-radius: 0; /* Supprime les coins arrondis sur mobile */
+    }
+}

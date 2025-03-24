@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iGetSolution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="img-vid/logo get fond clair.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- Barre de navigation -->
+    <header id="header">
+        <nav class="navbar transparent">
+            <div class="logo">
+                <a href="#"><img src="img-vid/logo get fond clair.png" alt="Logo" id="logo"></a>
+            </div>
+            <!-- Menu hamburger -->
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="close-icon">
+                <i class="fas fa-times"></i>
+            </div>
+        </nav>
+        <!-- Liens de navigation cachés derrière le menu hamburger -->
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#nos-solutions">NOS SOLUTIONS</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+<!-- Conteneur de la vidéo -->
+<div class="video-container">
+    <!-- Vidéo de fond -->
+    <video autoplay muted playsinline loop class="bg-video" disablePictureInPicture>
+        <source src="img-vid/Banner.mp4" type="video/mp4">
+    </video>
+    <!-- Image de remplacement pour les mobiles -->
+    <img src="img-vid/index2.png" class="bg-image" alt="Background Image">
+    
+    <!-- Superposition semi-transparente -->
+    <div class="video-overlay"></div>
+    
+    <!-- Contenu centré sur la vidéo -->
+    <div class="video-content">
+        <h1>Votre solution en maintenance informatique</h1>
+        <p>Autodidacte qui affectionne le monde de l'informatique depuis maintenant plus de 10 ans et qui réalise en parallèle de la maintenance informatique pour Professionnels & Particuliers que ce soit pour du Hardware ou du Software, ainsi que des projets de développement Web ou de divers logiciels.</p>
+        <!-- Bouton pour descendre -->
+        <a href="#nos-solutions" id="scroll-button" data-scroll-target="#nos-solutions" class="scroll-button">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
+</div>
+
+
+
+<!-- Section Nos Solutions -->
+<section id="nos-solutions" class="solutions">
+
+    <!-- Ligne impaire 1 : grande image à gauche -->
+    <div class="solutions-container row-odd">
+        <a href="Création sur Mesure de votre PC.html" class="solution-link">
+            <div class="solution-item solution1">
+                <div class="solution-overlay">
+                    <h3>Création sur Mesure de votre PC</h3>
+                    <p>Je construis des PC adaptés à vos exigences.</p>
+                </div>
+                <div class="solution-image" style="background-image: url('img-vid/PCCREA.jpg');"></div>
+            </div>
+        </a>
+        <a href="Programmation Web.html" class="solution-link">
+            <div class="solution-item solution2">
+                <div class="solution-overlay">
+                    <h3>Programmation Web</h3>
+                    <p>HTML, CSS, et Wordpress.</p>
+                </div>
+                <div class="solution-image" style="background-image: url('img-vid/index2.png');"></div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Ligne paire 2 : grande image à droite -->
+    <div class="solutions-container row-even">
+        <a href="Mise en Réseau et Gestion de Serveur.html" class="solution-link">
+            <div class="solution-item solution3">
+                <div class="solution-overlay">
+                    <h3>Mise en Réseau et Gestion de Serveur</h3>
+                    <p>Installation de Serveur/Nas et configuration de vos réseaux.</p>
+                </div>
+                <div class="solution-image" style="background-image: url('img-vid/install\ serv.jpg');"></div>
+            </div>
+        </a>
+        <a href="Récupération de Données.html" class="solution-link">
+            <div class="solution-item solution4">
+                <div class="solution-overlay">
+                    <h3>Récupération de Données HDD - SSD </h3>
+                       <h3> Smartphones et Tablettes</h3>
+                    <p>Perte de données ? </p>
+                    <p>Je vous aide à récupérer vos fichiers importants.</p>
+                </div>
+                <div class="solution-image" style="background-image: url('img-vid/recupdonn.jpg');"></div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Ligne impaire 3 : grande image à gauche -->
+    <div class="solutions-container row-odd">
+        <a href="installation-logiciels.html" class="solution-link">
+            <div class="solution-item solution5">
+                <div class="solution-overlay">
+                    <h3>Installation de Logiciels</h3>
+                    <p>Nous installons et configurons les logiciels dont vous avez besoin.</p>
+                </div>
+                <div class="solution-image" style="background-image: url('img-vid/logicielall.png');"></div>
+            </div>
+        </a>
+        <a href="optimisation-os.html" class="solution-link">
+            <div class="solution-item solution6">
+                <div class="solution-overlay">
+                    <h3>Optimisation de votre OS</h3>
+                    <p>Améliorez les performances de votre système d'exploitation avec notre service d'optimisation.</p>
+                </div>
+                <div class="solution-image" style="background-image: url('img-vid/BYPASS-INTERNET-WINDOWS-11-1.png');"></div>
+            </div>
+        </a>
+    </div>
+</section>
+
+
+
+
+<!-- Counter Start -->
+<div id="counters" class="counter-container">
+    <div class="counter">
+        <div class="counter-icon"><i class="fa fa-calendar"></i></div>
+        <div class="number"><span data-end-value="5">0</span></div>
+        <h4 class="font-weight">D'expérience</h4>
+    </div>
+    <div class="counter">
+        <div class="counter-icon"><i class="fa fa-check"></i></div>
+        <div class="number"><span data-end-value="99">0</span></div>
+        <h4 class="font-weight">Dépannage</h4>
+    </div>
+    <div class="counter">
+        <div class="counter-icon"><i class="fa fa-users"></i></div>
+        <div class="number"><span data-end-value="380">0</span></div>
+        <h4 class="font-weight">Clients</h4>
+    </div>
+    <div class="counter">
+        <div class="counter-icon"><i class="fa fa-heart"></i></div>
+        <div class="number"><span data-end-value="99">0</span></div>
+        <h4 class="font-weight">Recommandation</h4>
+    </div>
+</div>
+
+<section id="contact" class="contact-container">
+    <!-- Partie gauche : Formulaire de contact -->
+    <div class="contact-left">
+        <form id="contact-form" method="POST" action="https://formspree.io/f/xqazaayq">
+            <div class="fields">
+                <div class="field">
+                    <label for="name">Prénom</label>
+                    <input type="text" name="name" id="name" class="input-field" autocomplete="given-name" />
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="input-field" autocomplete="email" />
+                </div>
+                <div class="field">
+                    <label for="message">Votre Message</label>
+                    <textarea name="message" id="message" rows="6" class="textarea-field" autocomplete="off"></textarea>
+                </div>
+            </div>
+            <div class="button-container">
+                <input type="submit" value="Envoyer" class="submit-button">
+                <input type="reset" value="Supprimer" class="reset-button">
+            </div>
+        </form>
+        
+        <!-- Message de confirmation -->
+        <div id="confirmation-message" class="confirmation-message" style="display: none;">
+            Votre message a été envoyé avec succès !
+        </div>
+    </div>
+
+    <!-- Partie droite : Informations de contact -->
+    <div class="contact-right">
+        <div class="contact-method">
+            <i class="fas fa-envelope"></i>
+            <h4>Email</h4>
+            <a href="mailto:igetsolution@gmail.com">igetsolution@gmail.com</a>
+        </div>
+        <div class="contact-method">
+            <i class="fas fa-phone"></i>
+            <h4>Téléphone</h4>
+            <span>07.50.35.62.18</span>
+        </div>
+        <div class="contact-method">
+            <i class="fas fa-home"></i>
+            <h4>Adresse</h4>
+            <span>Angers<br>Durtal, La Flèche, et alentours</span>
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="footer">
+    <div class="social-icons">
+        <a href="https://fr.linkedin.com/in/iget-solution-766684274?challengeId=AQFoTydo7uftYQAAAZCSQifZAu5nVTtOOQxzS_RibKURRFEsGLW0QrWgOdaDoZ5VusLXVLX9zipnUZiUCkxkZhP83gUvWOieRQ&submissionId=6e52bfd3-b93b-e017-5dbe-9c73b21bc81a&challengeSource=AgE0JtyXxlSaPgAAAZCSQjGeGLK5FmLYkIqj5gEO1uEz1HaZOmfvAzU6M_lva6Y&challegeType=AgE-VpqHMmtUOQAAAZCSQjGilyI_hSpErWnZgDtd4ihIUeG_apnkY_E&memberId=AgGSkB-98w7hBQAAAZCSQjGlUlCJd7BGDWy-yRvVbMyzAxY&recognizeDevice=AgEpfLO3vrvqAAAAAZCSQjGpW5yVkpYhaxqdvnu5lcJbsAzvD2yn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/people/IGetSolution/100069763268469/"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/igetsolution/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/c/AZN72"><i class="fab fa-youtube"></i></a>
+        <a href="https://x.com/AmaZingN0OB"><i class="fab fa-twitter"></i></a>
+        
+    </div>
+    <p class="footer-text">
+        &copy;  Tous droits réservés à iGetSolution. Ce site a été entièrement conçu et réalisé par mes soins. Toute reproduction, totale ou partielle, est interdite sans mon autorisation.
+    </p>
+</footer>
+
+
+
+<!-- Bouton Back to Top -->
+<button id="back-to-top" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+</body>
+
+</html>

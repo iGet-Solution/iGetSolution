@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Administrateur</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='redim.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='StylePrincipal.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+<body>
+    <!-- Conteneur principal -->
+    <div class="form-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='img/logoadgvlogin.png') }}" alt="Logo de la boîte" class="logo">
+        </div>
+
+        <!-- Titre principal -->
+        <h1 class="form-title">Bienvenue sur le Tableau de Bord Administrateur {{ session['username'] }}</h1>
+        <h2 class="form-subtitle">Gestion des Tickets en Cours</h2>
+
+        <!-- Emplacement pour le message flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div id="flash-message" style="margin-bottom: 10px;">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+
+        <!-- Formulaire pour ajouter un créneau -->
+        <form action="{{ url_for('admin') }}" method="POST" class="ticket-form">
+            <label for="title">Titre de la demande :</label>
+            <input type="text" name="title" id="title" placeholder="Titre de la demande" required>
+            
+            <label for="description">Description :</label>
+            <textarea name="description" id="description" rows="3" placeholder="Décrivez votre demande..." required></textarea>
+            
+            <label for="date_range">Plage de date et heure :</label>
+            <input type="text" id="date_range" name="date_range" class="date-range-picker" placeholder="Sélectionnez une plage" required>
+
+
+
+
+            
+            <!-- Champs cachés pour envoyer le nom et l'email de l'administrateur -->
+            <input type="hidden" name="name" value="{{ session['username'] }}">
+            <input type="hidden" name="email" value="{{ session['email'] }}">
+            
+                
+                    <button type="submit" class="submit-button">Ajouter un créneau</button>
+                </form>
+                
+            </div>
+
+   <!-- Calendrier des créneaux -->
+<section class="calendar-container">
+    <h3 class="section-title">Calendrier des Créneaux</h3>
+    <div id="calendar" class="calendar-section"></div>
+</section>
+
+<!-- Liste des tickets -->
+<section class="ticket-list-container">
+    <h3 class="section-title">Liste des Tickets</h3>
+    <table class="ticket-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>
+                    <div class="filter-container">
+                        Nom
+                        <select id="filter-name-admin" class="filter-dropdown" onchange="filterByNameAdmin()">
+                            <option value="">-- Nom Global --</option>
+                            {% for ticket in tickets | unique(attribute='name') %}
+                            <option value="{{ ticket.name }}">{{ ticket.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </th>
+                <th>Email</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>
+                    Date et Heure
+                    <i id="sortDateBtn" class="fas fa-sort" style="cursor: pointer;"></i> <!-- Icône de la flèche -->
+                </th>
+                <th>
+                    <div class="filter-container">
+                        Statut
+                        <select id="filter-status-admin" class="filter-dropdown" onchange="filterByStatusAdmin()">
+                            <option value="">-- Tous les Statuts --</option>
+                            {% for ticket in tickets | unique(attribute='status') %}
+                            <option value="{{ ticket.status }}">{{ ticket.status }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </th>
+                <th>Commentaire de Sylvain</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr class="ticket-row-admin" data-name="{{ ticket.name }}" data-status="{{ ticket.status }}" data-date="{{ ticket.slot_time }}">
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.name }}</td>
+                <td>{{ ticket.email }}</td>
+                <td>{{ ticket.title }}</td>
+                <td>{{ ticket.description }}</td>
+                <!-- Utilisation du filtre pour les dates -->
+                <td>
+                    Début : {{ ticket.slot_time|format_datetime('%d/%m/%Y %H:%M') }}<br>
+                    Fin : {{ ticket.end_time|format_datetime('%d/%m/%Y %H:%M') }}
+                </td>
+                <td>{{ ticket.status }}</td>
+                <td>{{ ticket.admin_comment or "Aucun" }}</td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="{{ url_for('edit_ticket', ticket_id=ticket.id) }}" class="btn admin-btn modify-btn">Modifier</a>
+                        <button type="button" class="btn admin-btn delete-btn" onclick="showDeleteModal({{ ticket.id }})">Supprimer</button>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+<!-- Modal de confirmation de suppression -->
+<div id="deleteModal" class="delete-modal">
+    <div class="delete-modal-overlay">
+        <div class="delete-modal-content">
+            <p>Êtes-vous sûr de vouloir supprimer ce ticket ?</p>
+            <button id="confirmDelete" class="btn confirm-btn">OK</button>
+            <button class="btn cancel-btn" onclick="closeDeleteModal()">Annuler</button>
+        </div>
+    </div>
+</div>
+
+
+        
+
+<!-- FullCalendar JS -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/fr.js"></script>
+<!-- Bibliothèque principale de Flatpickr -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<!-- Configuration pour la langue française -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
+
+
+<!-- Passage des tickets au JS -->
+
+<script>
+    window.tickets = {{ tickets | tojson | safe }};  // Assurez-vous que tickets est bien une liste valide
+</script>
+
+
+<!-- Lien vers ton fichier JS -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+<!--bouton back-->
+
+<button id="back-to-top" class="back-to-top-btn">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- Bouton de déconnexion -->
+<button id="logout-btn" class="logout-btn">
+    <i class="fa-solid fa-power-off"></i>
+</button>
+
+<!-- Bouton d'export -->
+<button id="export-btn" class="export-btn">
+    <i class="fa-solid fa-file-export"></i>
+</button>
+
+
+<body class="admin-page">
+
+
+</body>
+</html>

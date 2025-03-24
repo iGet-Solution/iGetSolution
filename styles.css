@@ -1,0 +1,1027 @@
+/* Style de base pour le corps */
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Style de la navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000; /* Garder un z-index élevé pour capturer les clics */
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Navbar transparente mais interactive en haut de la page */
+.navbar.transparent {
+    background-color: rgba(0, 0, 0, 0.05); /* Ajoute une très légère transparence pour capturer les clics */
+    pointer-events: auto; /* Toujours cliquable même en haut de la page */
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Navbar solide après le scroll */
+.navbar.solid {
+    background-color: #1e3547;
+    pointer-events: auto;
+}
+
+/* Liens du menu */
+.nav-links {
+    display: none;
+    list-style: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #1e3547;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-links li {
+    padding: 15px 0;
+}
+
+/* Restaurer le style de la police et la taille avec plus de spécificité */
+.nav-links.nav-active a {
+    font-size: 1.5rem !important;  /* Ajuster la taille du texte et forcer l'application */
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    transition: color 0.3s ease;
+    position: relative;
+    text-decoration: none;
+}
+
+
+/* Effet bleu clair lors du survol ou de l'activation de la section */
+.nav-links a:hover,
+.nav-links a.active {
+    color: #52b3e4; /* Bleu clair lors du hover ou si la section est active */
+}
+
+/* Espacement propre entre les sections dans le menu */
+.nav-links li {
+    position: relative;
+    margin: 25px 0;
+    text-align: center;
+}
+
+/* Lignes blanches entre les sections */
+.nav-links li::after {
+    content: "";
+    display: block;
+    width: 100%; /* La ligne prendra toute la largeur du texte */
+    height: 1px;
+    background-color: #ffffff;
+    margin: 10px auto 0; /* Centrer la ligne */
+}
+
+/* Correction : affichage du trait sous la dernière section ("Contact") */
+.nav-links li:last-child::after {
+    display: block;
+}
+
+/* Pas de soulignement direct sur les liens */
+.nav-links a {
+    text-decoration: none;
+}
+
+.logo img {
+    width: 50px;
+    transition: width 0.3s ease;
+}
+
+/* Menu toggle (hamburger) toujours au-dessus */
+.menu-toggle {
+    z-index: 1001;
+    pointer-events: auto;
+}
+
+.menu-toggle i {
+    font-size: 30px;
+    color: white;
+    z-index: 10000;
+}
+
+/* Menu actif (plein écran) */
+.nav-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(13, 27, 42, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    opacity: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links.nav-active {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.nav-links li {
+    margin: 20px 0;
+}
+
+.nav-links a {
+    color: white;
+    font-size: 2rem;
+}
+
+/* Pour l'effet de la croix quand on clique */
+.menu-toggle.active i {
+    content: '\f00d';
+    color: white;
+}
+
+/* Cacher les liens de navigation par défaut */
+.nav-links {
+    display: none;
+}
+
+/* Ajustement du conteneur vidéo */
+.video-container {
+    position: relative;
+    width: 100%; /* Prend toute la largeur de la fenêtre */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Superposition semi-transparente au-dessus de la vidéo */
+.video-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Noir à 50% d'opacité */
+    z-index: 1; /* Place la superposition au-dessus de la vidéo */
+}
+
+/* Conteneur pour le titre, sous-titre et bouton de défilement */
+.video-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 2;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Assure que le contenu s'étend sur toute la largeur */
+}
+
+
+/* Style du titre */
+.video-content h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 0 0 10px;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+    position: relative; /* Nécessaire pour le pseudo-élément */
+}
+
+/* Soulignement du titre */
+.video-content h1::after {
+    content: "";
+    display: block;
+    width: 50%; /* Ajustez la largeur de la ligne */
+    height: 3px; /* Épaisseur de la ligne */
+    background-color: #ffffff; /* Couleur de la ligne */
+    margin: 8px auto 0; /* Centrage et espacement de la ligne */
+    opacity: 0.8; /* Légère transparence */
+}
+
+/* Style du sous-titre */
+.video-content p {
+    font-size: 1.5rem;
+    color: #e0e0e0;
+    line-height: 1.4;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    margin: 0 0 20px;
+}
+
+/* Ajustement de la vidéo elle-même */
+.bg-video {
+    width: 100%; /* Prend toute la largeur du conteneur */
+    height: 100%; /* Prend toute la hauteur du conteneur */
+    object-fit: cover; /* Couvre tout l'espace sans déformation */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* La vidéo est en arrière-plan sous la superposition */
+}
+
+
+/* Bouton pour scroller */
+.scroll-button {
+    font-size: 2rem;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.scroll-button i {
+    animation: bounce 2s infinite;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* Style général pour les sections */
+section {
+    padding: 50px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+/* Si vous voulez une section spécifique avec 100vh */
+#video-section {
+    height: 100vh;
+}
+
+
+/* Responsiveness */
+@media only screen and (max-width: 768px) {
+    .scroll-button {
+        font-size: 2.5rem;
+    }
+
+    .navbar.solid .logo img {
+        width: 40px;
+    }
+}
+/* Améliorer les titres */
+/* Améliorer les titres */
+h1, h2, h3 {
+    font-size: 2.5rem; /* Augmenter la taille des titres */
+    font-weight: 700;  /* Rendre les titres plus gras */
+    color: #0d1b2a;    /* Couleur sombre pour les titres */
+    margin-bottom: 20px; /* Ajouter un espacement en bas des titres */
+}
+
+
+
+
+
+
+
+
+/* Améliorer les paragraphes */
+p {
+    font-size: 1.2rem;  /* Taille légèrement augmentée pour les paragraphes */
+    font-weight: 400;   /* Laisser les paragraphes plus légers pour une bonne lisibilité */
+    color: #333333;     /* Couleur de texte plus sombre pour une bonne lecture */
+    line-height: 1.6;   /* Espacement entre les lignes */
+    margin-bottom: 15px; /* Ajout d'un espacement en bas des paragraphes */
+}
+
+/* Icône de fermeture (croix) */
+.close-icon {
+    display: none; /* Cachée par défaut */
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 10000; /* Augmente le z-index pour que la croix soit au-dessus du menu */
+}
+
+/* Afficher la croix uniquement lorsque le menu est actif */
+.nav-active .close-icon {
+    display: block; /* La croix apparaît lorsque le menu est ouvert */
+}
+/* Pour le bouton hamburger */
+.menu-toggle i:hover {
+    color: #52b3e4; /* Bleu clair au survol */
+}
+
+/* Pour la flèche de scroll */
+.scroll-button i:hover {
+    color: #52b3e4; /* Bleu clair au survol */
+}
+.scroll-button i {
+    color: white;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9); /* Augmentation de l'ombre pour encore plus de visibilité */
+    animation: bounce 2s infinite;
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transition douce */
+}
+
+
+
+
+/* Section Nos Solutions */ 
+/* Section Nos Solutions */ 
+.solutions-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Grande image à gauche pour les lignes impaires */
+    grid-auto-rows: 50vh; /* Fixe la hauteur de chaque ligne à 50% de la hauteur de l'écran */
+    gap: 0; /* Supprime l'espace entre les éléments */
+    width: 100%; /* Prend toute la largeur de la fenêtre */
+    margin: 0;
+    padding: 0;
+}
+
+.solution-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.solution-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    filter: brightness(0.8); /* Appliquer le filtre par défaut */
+    transition: transform 0.5s ease, filter 0.5s ease; /* Animation de zoom et filtre */
+}
+
+.solution-item:hover .solution-image {
+    transform: scale(1.05); /* Zoom léger à 5% */
+    filter: brightness(1); /* Retire complètement le filtre sur le survol */
+}
+
+.solution-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5); /* Noir à 50% d'opacité */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 2; /* S'assure que l'overlay reste au-dessus des images */
+}
+
+.solution-overlay h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 10px;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+    position: relative; /* Nécessaire pour positionner la bordure après */
+}
+
+.solution-overlay h3::after {
+    content: "";
+    display: block;
+    width: 100%; /* Prend toute la largeur du texte */
+    height: 2px; /* Épaisseur de la ligne */
+    background-color: #ffffff; /* Couleur de la ligne */
+    margin: 5px auto 0; /* Espacement au-dessus */
+    opacity: 0.8; /* Légère transparence */
+}
+
+.solution-overlay p {
+    font-size: 1.3rem;  /* Taille ajustée du sous-titre */
+    color: #e0e0e0;
+    line-height: 1.4;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+/* Responsive styling */
+@media only screen and (max-width: 768px) {
+    .solution-overlay h3 {
+        font-size: 1.3rem; /* Ajuster pour les petits écrans */
+    }
+    .solution-overlay p {
+        font-size: 0.9rem; /* Ajuster pour les petits écrans */
+    }
+}
+
+/* Lignes impaires : Grande image à gauche, petite à droite */
+.row-odd .solution-item:nth-child(1) {
+    grid-column: 1 / 2;
+}
+
+.row-odd .solution-item:nth-child(2) {
+    grid-column: 2 / 3;
+}
+
+/* Lignes paires : Petite image à gauche, grande à droite */
+.row-even {
+    grid-template-columns: 1fr 1.5fr;
+}
+
+.row-even .solution-item:nth-child(1) {
+    grid-column: 1 / 2;
+}
+
+.row-even .solution-item:nth-child(2) {
+    grid-column: 2 / 3;
+}
+
+/* Supprimer tout espace extérieur */
+#nos-solutions {
+    padding: 0;
+    margin: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .solutions-container {
+        display: block;
+        width: 100%;
+    }
+
+    .solution-item {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 0; /* Supprime l'espace entre les éléments */
+    }
+    .solution-image {
+        width: 100%;
+        height: 250px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        z-index: 1;
+    }
+    .solution-overlay {
+        font-size: 1rem;
+        padding: 15px;
+        text-align: center;
+        color: white;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+}
+
+
+
+body {
+    overflow-x: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        height: 70px; /* Ajustez cette valeur pour obtenir la hauteur idéale */
+    }
+}
+/* Ajustements pour les écrans mobiles */
+@media only screen and (max-width: 768px) {
+    .video-content h1 {
+        font-size: 2.8rem; /* Réduire la taille pour les petits écrans */
+    }
+
+    .video-content p {
+        font-size: 1.2rem; /* Réduire la taille pour les petits écrans */
+    }
+
+    .scroll-button {
+        font-size: 2rem; /* Adapter la taille de l'icône de scroll */
+    }
+}
+/* Style pour le bouton Back to Top */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px; /* Réduction de la largeur */
+    height: 40px; /* Réduction de la hauteur */
+    background-color: #1e3547; /* Couleur de la navbar */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem; /* Ajuste la taille de l'icône */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+/* Style pour le bouton Back to Top */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px; /* Réduction de la largeur */
+    height: 40px; /* Réduction de la hauteur */
+    background-color: #1e3547; /* Couleur de la navbar */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem; /* Ajuste la taille de l'icône */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #52b3e4; /* Couleur lors du hover */
+}
+
+/* Ajustement pour les petits écrans */
+@media only screen and (max-width: 768px) {
+    .back-to-top {
+        width: 35px; /* Taille réduite pour mobile */
+        height: 35px;
+        font-size: 1rem; /* Réduction de l'icône */
+        bottom: 15px; /* Ajuste la position pour plus de confort */
+        right: 15px;
+    }
+}
+
+.back-to-top:hover {
+    background-color: #52b3e4; /* Couleur lors du hover */
+}
+
+/* Ajustement pour les petits écrans */
+@media only screen and (max-width: 768px) {
+    .back-to-top {
+        width: 35px; /* Taille réduite pour mobile */
+        height: 35px;
+        font-size: 1rem; /* Réduction de l'icône */
+        bottom: 15px; /* Ajuste la position pour plus de confort */
+        right: 15px;
+    }
+}
+
+/* Counter Container */
+.counter-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 0;
+    background-color: #1e3547; /* Ajuste la couleur en fonction du thème de ton site */
+    color: white;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur les petits écrans */
+}
+
+.counter {
+    text-align: center;
+    flex: 1 1 150px; /* Ajuste la largeur minimale de chaque compteur */
+    margin: 10px 0;
+}
+
+.counter-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.number {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.font-weight {
+    margin-top: 5px;
+    font-size: 1.2rem;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+    .counter-container {
+        padding: 20px 0;
+    }
+
+    .counter-icon {
+        font-size: 2rem; /* Réduit la taille des icônes sur les petits écrans */
+    }
+
+    .number {
+        font-size: 2rem; /* Réduit la taille des nombres sur les petits écrans */
+    }
+
+    .font-weight {
+        font-size: 1rem; /* Réduit la taille des sous-titres sur les petits écrans */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .counter {
+        flex: 1 1 100%; /* Prend toute la largeur de l'écran pour chaque compteur */
+    }
+
+    .counter-icon {
+        font-size: 1.8rem;
+    }
+
+    .number {
+        font-size: 1.8rem;
+    }
+
+    .font-weight {
+        font-size: 0.9rem;
+    }
+}
+#counters {
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Bordure blanche semi-transparente en haut */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Bordure blanche semi-transparente en bas */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #1e3547;
+}
+
+
+
+/* Conteneur principal pour la section de contact */
+/* Conteneur principal pour la section de contact */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 40px;
+    background-color: #1e3547;
+    color: white;
+    box-sizing: border-box;
+}
+
+/* Partie gauche : Formulaire de contact */
+.contact-left {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.fields .field {
+    margin-bottom: 20px;
+}
+/* Style du label pour augmenter la taille de la police */
+.field label {
+    font-size: 1.5rem; /* Ajuste cette valeur selon la taille souhaitée */
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+
+.field input, .field textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #2a4b63;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none; /* Désactive le redimensionnement */
+}
+
+.button-container input[type="submit"] {
+    padding: 15px 30px; /* Augmente la taille des boutons */
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+    color: #1e3547; /* Couleur du texte */
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-right: 10px; /* Espace entre les boutons */
+}
+
+.button-container input[type="submit"]:hover {
+    background-color: #52b3e4; /* Change le fond en bleu lors du survol */
+    color: #ffffff; /* Change la couleur du texte en blanc */
+}
+
+.button-container input[type="reset"] {
+    padding: 15px 30px;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button-container input[type="reset"]:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Léger fond blanc transparent lors du survol */
+}
+
+
+/* Partie droite : Informations de contact */
+.contact-right {
+    flex: 1;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-left: 1px solid rgba(255, 255, 255, 0.2); /* Ligne verticale entre les sections */
+    padding-right: 20px; /* Ajoute un espace pour éviter que le contenu touche la bordure */
+}
+
+.contact-method {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Ligne fine entre chaque élément */
+}
+
+.contact-method:last-child {
+    border-bottom: none; /* Supprime la dernière bordure en bas du dernier élément */
+}
+
+.contact-method i {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.contact-method h4 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.contact-method a, .contact-method span {
+    color: #b0c7d6;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-left, .contact-right {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .button-container {
+        justify-content: center;
+    }
+}
+@media (max-width: 768px) {
+    .contact-right {
+        border-left: none; /* Cache la ligne verticale en mode mobile */
+    }
+}
+
+
+
+
+/* Footer */
+.footer {
+    background-color: #1e3547;
+    color: #b0c7d6;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Bordure fine blanche en haut */
+}
+
+.footer .social-icons {
+    margin-bottom: 10px;
+}
+
+.footer .social-icons a {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin: 0 10px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #52b3e4; /* Couleur au survol */
+}
+
+.footer .footer-text {
+    color: #b0c7d6;
+    font-size: 0.9rem;
+}
+
+.footer .footer-text a {
+    color: #b0c7d6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer .footer-text a:hover {
+    color: #ffffff; /* Change la couleur au survol */
+}
+html {
+    scroll-behavior: smooth;
+}
+/* Style du lien actif pour la section "Contact" */
+#menu a[href="#contact"].active {
+    color: #1e90ff; /* Bleu pour la section "Contact" */
+}
+
+
+
+
+
+
+.contact-method i {
+    color: white; /* Couleur initiale */
+    font-size: 1.5rem; /* Ajuste la taille de l'icône */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-method i:hover {
+    color: #52b3e4; /* Couleur bleue au survol */
+    transform: scale(1.2); /* Agrandit légèrement l'icône */
+}
+.contact-method h4 {
+    color: white; /* Couleur initiale */
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.contact-method h4:hover {
+    color: #52b3e4; /* Couleur bleue au survol */
+}
+.contact-method a {
+    color: #d1d1d1; /* Couleur initiale */
+    text-decoration: none; /* Supprime le soulignement */
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 1px solid transparent; /* Ligne invisible au début */
+}
+
+.contact-method a:hover {
+    color: #52b3e4; /* Couleur bleue au survol */
+    border-bottom: 1px solid #52b3e4; /* Ligne bleue visible au survol */
+}
+
+.contact-method span {
+    color: #d1d1d1; /* Couleur initiale */
+    font-size: 0.9rem; /* Taille du texte */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-method span:hover {
+    color: #52b3e4; /* Couleur bleue au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille */
+}
+
+
+
+
+
+/* Effet de survol pour les titres (h3) */
+#nos-solutions .solution-overlay h3 {
+    color: #fff; /* Couleur de base */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animation fluide */
+}
+
+#nos-solutions .solution-overlay h3:hover {
+    color: #52b3e4; /* Bleu au survol */
+    transform: scale(1.05); /* Agrandissement léger */
+}
+
+
+
+
+/* Effet de survol pour le titre principal (h1) */
+.video-content h1 {
+    color: #fff; /* Couleur de base */
+    font-size: 3.2rem; /* Taille du titre */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre légère */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animation fluide */
+}
+
+.video-content h1:hover {
+    color: #52b3e4; /* Bleu au survol */
+    transform: scale(1.05); /* Agrandissement léger */
+}
+
+/* Effet de survol pour le sous-titre (p ou span) */
+.video-content p,
+.video-content span {
+    color: #d1d1d1; /* Couleur de base */
+    font-size: 1.5rem; /* Taille du sous-titre */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animation fluide */
+}
+
+.video-content p:hover,
+.video-content span:hover {
+    color: #52b3e4; /* Bleu au survol */
+    transform: scale(1.02); /* Agrandissement léger */
+}
+
+
+
+/* Ajouter le filtre initial sur les images de la section "Nos Solutions" */
+#nos-solutions .solutions-container .solution-item .solution-image {
+    filter: brightness(0.7); /* Filtre initial */
+    transition: filter 0.3s ease, transform 0.3s ease; /* Ajout de la transition */
+    position: relative;
+    z-index: 1;
+}
+
+/* Supprimer le filtre au survol */
+#nos-solutions .solutions-container .solution-item:hover .solution-image {
+    filter: brightness(1); /* Filtre normal */
+    transform: scale(1.05); /* Ajout d'un effet de zoom */
+    z-index: 2;
+}
+
+/* Assurez-vous que l'overlay reste visible et bien positionné */
+#nos-solutions .solutions-container .solution-item .solution-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+/* Ajustement pour le survol afin de garder l'overlay visible */
+#nos-solutions .solutions-container .solution-item:hover .solution-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 4;
+}
