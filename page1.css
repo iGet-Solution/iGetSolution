@@ -1,4 +1,4 @@
-/* === Réinitialisation globale === */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,15 +8,15 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden; /* Empêche les débordements horizontaux */
+    overflow-x: hidden; 
 }
 
 
-/* === Barre de navigation === */
+
 body.page1 {
-    margin: 0; /* Supprime les marges par défaut */
+    margin: 0; 
     padding: 0;
-    padding-top: 70px; /* Hauteur de la navbar */
+    padding-top: 70px; 
     box-sizing: border-box;
 }
 
@@ -33,63 +33,63 @@ body.page1 {
     justify-content: space-between;
     padding: 0 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    margin: 0; /* Assurez-vous qu'il n'y a pas de marges */
-    border: none; /* Supprime toute bordure */
-    box-shadow: none; /* Supprime les ombres */
+    margin: 0; 
+    border: none; 
+    box-shadow: none; 
 
 }
 
-/* Ajout d'un espace sous la navbar */
+
 body.page1 {
-    padding-top: 70px; /* Compense la hauteur de la navbar */
-    background-color: #1e3547; /* Couleur principale du site */
+    padding-top: 70px; 
+    background-color: #1e3547; 
     
 }
 
-/* === Section principale === */
+
 body.page1 .page1-section {
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #1e3547; /* Couleur de fond */
+    background-color: #1e3547; 
     
 
 }
 
-/* === Contenu interne === */
+
 body.page1 .page1-item {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Bordure blanche en bas */
-    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Bordure blanche en bas */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+    border-top: 1px solid rgba(255, 255, 255, 0.2); 
     
 }
 
 body.page1 .page1-item:nth-child(odd) {
-    flex-direction: row; /* Par défaut */
+    flex-direction: row; 
 }
 
 body.page1 .page1-item:nth-child(even) {
-    flex-direction: row-reverse; /* Inverse pour les sections paires */
+    flex-direction: row-reverse; 
 }
 
-/* Texte */
+
 .page1-text {
     flex: 1;
-    background-color: #0d2538; /* Couleur de fond sombre */
+    background-color: #0d2538;
     padding: 40px;
-    border-radius: 0 8px 8px 0; /* Coins arrondis, ajustés */
+    border-radius: 0 8px 8px 0; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #fff;
-    position: relative; /* Ajoute cette ligne pour que le pseudo-élément soit positionné par rapport à cet élément */
+    position: relative; 
 
 }
 
 
 body.page1 .page1-item:nth-child(even) .page1-text {
-    border-radius: 8px 0 0 8px; /* Coins inversés pour les sections paires */
+    border-radius: 8px 0 0 8px; 
 }
 
 
@@ -99,18 +99,18 @@ body.page1 .page1-item:nth-child(even) .page1-text {
     margin-bottom: 10px;
     font-weight: bold;
     color: #fff;
-    position: relative; /* Nécessaire pour positionner le ::afte */
-    display: inline-block; /* Permet au ::after de correspondre au texte uniquement */
+    position: relative; 
+    display: inline-block; 
 }
 
 .page1-text h3::after {
     content: "";
     display: block;
-    width: 100%; /* Correspond maintenant à la largeur du texte */
+    width: 100%; 
     height: 2px;
     background-color: #52b3e4;
     position: absolute;
-    bottom: -5px; /* Ajuste la position sous le texte */
+    bottom: -5px; 
     left: 0;
 }
 
@@ -120,23 +120,22 @@ body.page1 .page1-item:nth-child(even) .page1-text {
     color: #d1d1d1;
 }
 
-/* Images */
 .page1-image-container {
     flex: 1;
     display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    padding: 20px 0; /* Ajoute de l'espace en haut et en bas (20px équivaut à environ 2 cm) */
-    background-color: #1e3547; /* Même couleur que le site */
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px 0; 
+    background-color: #1e3547; 
 }
 
 .page1-image {
-    width: 95%; /* Réduit la largeur pour ajouter de l'espace visuel */
-    height: auto; /* Ajuste automatiquement la hauteur */
-    max-height: 300px; /* Limite la hauteur pour plus de contrôle */
-    object-fit: cover; /* Assure un bon recadrage */
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    width: 95%; 
+    height: auto; 
+    max-height: 300px; 
+    object-fit: cover; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*igetsolution bébé*/
 }
 
 
@@ -144,44 +143,44 @@ body.page1 .page1-item:nth-child(even) .page1-text {
 @media (max-width: 768px) {
     body.page1 .page1-item {
         display: flex;
-        flex-direction: column; /* Structure en colonne */
+        flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        width: 100%; /* Prend toute la largeur */
-        margin: 20px 0; /* Espacement en haut et en bas */
-        padding: 20px 0; /* Ajoute du padding en haut et en bas */
-        text-align: center; /* Texte centré */
+        width: 100%; 
+        margin: 20px 0; 
+        padding: 20px 0; 
+        text-align: center; 
     }
 
     body.page1 .page1-text {
-        order: 1; /* Texte toujours en premier */
-        width: 90%; /* Largeur du texte réduite pour le centrage */
-        margin-bottom: 15px; /* Espacement sous le texte */
-        padding: 15px; /* Espacement interne */
-        background-color: #0d2538; /* Couleur de fond */
-        border-radius: 8px; /* Coins arrondis */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre */
+        order: 1; 
+        width: 90%; 
+        margin-bottom: 15px; 
+        padding: 15px; 
+        background-color: #0d2538; 
+        border-radius: 8px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     }
 
     body.page1 .page1-image-container {
-        order: 2; /* L'image après le texte */
-        width: 100%; /* Largeur totale */
+        order: 2; 
+        width: 100%; 
         display: flex;
-        justify-content: center; /* Centre horizontalement */
-        margin-top: 15px; /* Espacement au-dessus */
+        justify-content: center; 
+        margin-top: 15px; 
     }
 
     body.page1 .page1-image {
-        max-width: 90%; /* Limite la largeur */
-        height: auto; /* Garde les proportions */
-        border-radius: 8px; /* Coins arrondis */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre */
+        max-width: 90%; 
+        height: auto; 
+        border-radius: 8px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     }
 
-    /* Supprime tout autre alignement hérité */
+    
     body.page1 .page1-item:nth-child(even),
     body.page1 .page1-item:nth-child(odd) {
-        flex-direction: column; /* Forçage en colonne */
+        flex-direction: column; 
     }
 }
 
@@ -207,60 +206,60 @@ body.page1 .page1-item:nth-child(even) .page1-text {
 
 
 .page1-text h3 {
-    transition: color 0.3s ease; /* Transition fluide */
+    transition: color 0.3s ease;
 }
 
 .page1-text h3:hover {
-    color: #52b3e4; /* Bleu similaire à votre icône */
+    color: #52b3e4; 
 }
 .contact-method i {
-    color: white; /* Couleur initiale */
-    font-size: 1.5rem; /* Ajuste la taille de l'icône */
+    color: white; 
+    font-size: 1.5rem; 
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .contact-method i:hover {
-    color: #52b3e4; /* Couleur bleue au survol */
-    transform: scale(1.2); /* Agrandit légèrement l'icône */
+    color: #52b3e4; 
+    transform: scale(1.2); 
 }
 .contact-method h4 {
-    color: white; /* Couleur initiale */
+    color: white; 
     margin-top: 10px;
     transition: color 0.3s ease;
 }
 
 .contact-method h4:hover {
-    color: #52b3e4; /* Couleur bleue au survol */
+    color: #52b3e4; 
 }
 .contact-method a {
-    color: #d1d1d1; /* Couleur initiale */
-    text-decoration: none; /* Supprime le soulignement */
+    color: #d1d1d1; 
+    text-decoration: none; 
     transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 1px solid transparent; /* Ligne invisible au début */
+    border-bottom: 1px solid transparent; 
 }
 
 .contact-method a:hover {
-    color: #52b3e4; /* Couleur bleue au survol */
-    border-bottom: 1px solid #52b3e4; /* Ligne bleue visible au survol */
+    color: #52b3e4; 
+    border-bottom: 1px solid #52b3e4; 
 }
 .contact-method {
     text-align: center;
-    margin-bottom: 20px; /* Espacement entre les sections */
+    margin-bottom: 20px; 
 }
 
 .contact-method span {
-    color: #d1d1d1; /* Couleur du texte */
-    font-size: 0.9rem; /* Taille du texte */
+    color: #d1d1d1; 
+    font-size: 0.9rem; 
 }
 .contact-method span {
-    color: #d1d1d1; /* Couleur initiale */
-    font-size: 0.9rem; /* Taille du texte */
+    color: #d1d1d1; 
+    font-size: 0.9rem; 
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .contact-method span:hover {
-    color: #52b3e4; /* Couleur bleue au survol */
-    transform: scale(1.05); /* Légère augmentation de la taille */
+    color: #52b3e4; 
+    transform: scale(1.05); 
 }
 
 

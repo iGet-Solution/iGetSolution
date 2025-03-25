@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM chargé");
 
-    // Récupération des éléments
+ 
     const mobileMenu = document.getElementById('mobile-menu');
     const closeIcon = document.querySelector('.close-icon');
     const navLinks = document.getElementById('nav-links');
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let menuOpen = false;
 
-    // === Gestion du menu hamburger ===
+
     if (mobileMenu && closeIcon && navLinks) {
         mobileMenu.addEventListener('click', (event) => {
             event.preventDefault();
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === Gestion de la barre de navigation (scroll transparent/solide) ===
+   
     if (navbar) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === Bouton retour en haut ===
+    
     if (backToTopButton) {
         window.addEventListener('scroll', () => {
             backToTopButton.classList.toggle('show', window.scrollY > 300);
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.warn("Bouton retour en haut introuvable");
     }
 
-    // === Mise à jour des sections actives ===
+    
     function updateActiveSection() {
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === Défilement en douceur ===
+    
     if (scrollButton) {
         scrollButton.addEventListener('click', (event) => {
             event.preventDefault();
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === Gestion du formulaire ===
+    
 if (form) {
     console.log("Formulaire détecté :", form);
 
@@ -141,7 +141,7 @@ if (form) {
             });
 
             if (response.ok) {
-                // Affiche le message de confirmation
+                
                 confirmationContainer.style.display = "block";
                 confirmationContainer.innerText = "Votre message a été envoyé avec succès !";
                 confirmationContainer.style.color = "white";
@@ -150,14 +150,14 @@ if (form) {
                 confirmationContainer.style.borderRadius = "5px";
                 confirmationContainer.style.marginTop = "10px";
 
-                form.reset(); // Réinitialise le formulaire
+                form.reset(); 
 
-                // Cache le message après 5 secondes
+                
                 setTimeout(() => {
                     confirmationContainer.style.display = "none";
                 }, 5000);
             } else {
-                // Affiche un message d'erreur
+               
                 confirmationContainer.style.display = "block";
                 confirmationContainer.innerText = "Erreur lors de l'envoi. Veuillez réessayer.";
                 confirmationContainer.style.color = "white";
@@ -181,10 +181,10 @@ if (form) {
     console.error("Formulaire introuvable");
 }
 
-    // === Animation des compteurs ===
+    
     function animateCounter(element, endValue) {
         let startValue = 0;
-        const duration = 10000; // 10 secondes
+        const duration = 10000; 
         const increment = Math.ceil(endValue / (duration / 30));
 
         const counter = setInterval(() => {
